@@ -9,7 +9,7 @@ public abstract class UtilityDate {
 		// TODO Auto-generated constructor stub
 	}
 	public static String displayCalendar(int month, int year){
-		System.out.println("Enter the month you want a calendar for (ex. January 2, 2017 = 1): ");
+		//System.out.println("Enter the month you want a calendar for (ex. January 2, 2017 = 1): ");
 		//checks if letters are input
 		int givenDay = 1;
 		int givenMonth = month;
@@ -118,12 +118,57 @@ public abstract class UtilityDate {
 			return date.lengthOfMonth();
 	} 
 	public static String toString(int month, int day, int year, String delimiter){
-		if(Integer.toString(month).length()==2&&Integer.toString(day).length()==2&&Integer.toString(year).length()==2){
-			return String.format("%2%2%2%2", month,delimiter,day,delimiter,year);
-		}
-		else{
+		//System.out.println("Enter the day of the month you were born (ex. January 2, 2017 = 2): ");
+		//checks if letters are input
+	
+			if(day < 0 || day > 31){
+				System.out.println("The day you entered wasn't valid. Please try again.");
+				return("The day you entered wasn't valid. Please try again.");
 			}
-		return "Invalid Input.Please try again";
+			else{
+				
+			}
+	
+	
+	//Month Input
+	
+		//System.out.println("Enter the month you were born (ex. January 2, 2017 = 1): ");
+		//checks if letters are input
+	
+			//checks if the day is valid
+			if(month < 1 || month > 13){
+				System.out.println("The month you entered wasn't valid. Please try again.");
+				return("The month you entered wasn't valid. Please try again.");
+			}
+			//checks if the day exists in this month
+			else if(((day>30)&&month == 4)||((day>30)&&month == 6)||((day>30)&&month == 9)||((day>30)&&month == 11)||((day>29)&&month == 2)){
+				System.out.println("Day " + day + " doesn't exist in month " + month +". Please try again.");
+				return("Day " + day + " doesn't exist in month " + month +". Please try again.");
+			}
+			else{
+				
+			}
+			//Year Input
+	
+		//System.out.println("Enter the year you were born (ex. January 2, 2017 = 2017): ");
+		//checks if letters are input
+		
+			//checks if the user has given a date that hasn't occured yet
+			if(year<0){
+				System.out.println("The year you entered wasn't valid. Please try again.");	
+				return("The year you entered wasn't valid. Please try again.");
+			}
+			else if(((year%4) != 0) && (day > 28) && month == 2){
+				System.out.println("There are only 28 days of February in " + year + ". Please try again.");
+				return("There are only 28 days of February in " + year + ". Please try again.");
+			}
+			else{
+				
+			}
+		//if(Integer.toString(month).length()<=2&&Integer.toString(day).length()<=2&&Integer.toString(year).length()==4){
+			return String.format("%s%s%s%s%s", month,delimiter,day,delimiter,year);
+			
+		
 	} //prints the date as mm/dd/yyyy
 	public static boolean isLeapYear(int year){
 		//returns t/f if the year is a leap year
